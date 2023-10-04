@@ -30,6 +30,7 @@ export default class World {
     load() {
       // load islands from localstorage into array
       // loop over the array and addIslands()
+      document.querySelectorAll(".island").forEach(islandelement => islandelement.remove()); 
       let storedNames = JSON.parse(localStorage.getItem("islands"));
       for (let i = 0; i < storedNames.length; i++) {
         this.addIsland(storedNames[i]);
@@ -58,23 +59,23 @@ export default class World {
         console.log(island);
         this.islands.push(islandName);
         div.innerHTML = islandName;
-
-        let coords = this.getCoordinates();
-        
-        // use js web animation api to animate the island to coords
-        div.animate([
-            { transform: `translate(0px, 0px)` },
-            { transform: `translate(${coords.x}px, ${coords.y}px)`}
-        ], {
-            duration: 1000,
-            iterations: 1,
-            fill: 'forwards'
-        });
+        this.moveIsland(div);
 
     }
-  
+
     moveIsland(island) {
       // this might be a good point to animate the islands with JS Animations API
+      let coords = this.getCoordinates();
+
+      island.animate([
+        { transform: `translate(0px, 0px)` },
+        { transform: `translate(${coords.x}px, ${coords.y}px)`}
+    ], {
+        duration: 1000,
+        iterations: 1,
+        fill: 'forwards'
+    });
     }
-  }
+    }
+    
   
