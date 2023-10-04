@@ -7,6 +7,7 @@ body {
   position: absolute;
   width: 100px;
   height: 100px;
+  background-color: green;
   color: white;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
@@ -23,11 +24,6 @@ body {
 
 }
 
-.island:hover {
-  background-color: black !important; 
-  
-}
-
 .buttons {
   position: absolute;
   bottom: 1em;
@@ -35,6 +31,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 1em;
+  z-index: 1;
 }
 
 .btn {

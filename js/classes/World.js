@@ -49,6 +49,17 @@ export default class World {
         document.body.appendChild(div);
         div.style.backgroundColor = islandElement.getRandomColor();
         div.innerHTML = islandElement.getRandomName();
+        let coords = this.getCoordinates();
+
+        // use js web animation api to animate the island to coords
+        div.animate([
+            { transform: `translate(0px, 0px)` },
+            { transform: `translate(${coords.x}px, ${coords.y}px)`}
+        ], {
+            duration: 1000,
+            iterations: 1,
+            fill: 'forwards'
+        });
 
     }
   
