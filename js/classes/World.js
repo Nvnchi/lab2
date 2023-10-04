@@ -17,7 +17,7 @@ export default class World {
       });
 
       document.getElementById("btnLoad").addEventListener("click", () => {
-        console.log("load");
+        this.load();
       });
     }
   
@@ -30,6 +30,11 @@ export default class World {
     load() {
       // load islands from localstorage into array
       // loop over the array and addIslands()
+      let storedNames = JSON.parse(localStorage.getItem("islands"));
+      console.log(storedNames)
+      for (let islandname in storedNames) {
+        this.addIsland(islandname);
+     }
     }
   
     getCoordinates() {
