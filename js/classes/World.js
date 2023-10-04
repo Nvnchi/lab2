@@ -13,7 +13,7 @@ export default class World {
       });
 
       document.getElementById("btnSave").addEventListener("click", () => {
-        console.log("save");
+        this.save();
       });
 
       document.getElementById("btnLoad").addEventListener("click", () => {
@@ -24,6 +24,7 @@ export default class World {
     save() {
       // save array islands to localstorage as string
       // loop over all this.islands and save the names
+      localStorage.setItem("islands", JSON.stringify(this.islands));
     }
   
     load() {
@@ -48,9 +49,13 @@ export default class World {
         div.classList.add("island");
         document.body.appendChild(div);
         div.style.backgroundColor = islandElement.getRandomColor();
-        div.innerHTML = islandElement.getRandomName();
-        let coords = this.getCoordinates();
 
+        const islandName = islandElement.getRandomName();
+        this.islands.push(islandName);
+        div.innerHTML = islandName;
+
+        let coords = this.getCoordinates();
+        
         // use js web animation api to animate the island to coords
         div.animate([
             { transform: `translate(0px, 0px)` },
