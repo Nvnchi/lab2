@@ -46,21 +46,15 @@ export default class World {
       };
     }
   
-    addIsland(island) {
+    addIsland(islandName) {
       // add the islands to the DOM
-      const islandElement = new Island();
+      let islandElement = document.createElement('div');
+      islandElement.classList.add("island");
 
-      let div = document.createElement('div');
-        div.classList.add("island");
-        document.body.appendChild(div);
-        div.style.backgroundColor = islandElement.getRandomColor();
+      const islandObject = new Island(islandName, islandElement);
 
-        const islandName = island !== undefined ? island : islandElement.getRandomName();
-        console.log(island);
-        this.islands.push(islandName);
-        div.innerHTML = islandName;
-        this.moveIsland(div);
-
+      this.islands.push(islandObject);
+      this.moveIsland(islandObject.htmlElement);
     }
 
     moveIsland(island) {
