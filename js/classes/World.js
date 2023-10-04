@@ -31,9 +31,8 @@ export default class World {
       // load islands from localstorage into array
       // loop over the array and addIslands()
       let storedNames = JSON.parse(localStorage.getItem("islands"));
-      console.log(storedNames)
-      for (let islandname in storedNames) {
-        this.addIsland(islandname);
+      for (let i = 0; i < storedNames.length; i++) {
+        this.addIsland(storedNames[i]);
      }
     }
   
@@ -55,7 +54,8 @@ export default class World {
         document.body.appendChild(div);
         div.style.backgroundColor = islandElement.getRandomColor();
 
-        const islandName = islandElement.getRandomName();
+        const islandName = island !== undefined ? island : islandElement.getRandomName();
+        console.log(island);
         this.islands.push(islandName);
         div.innerHTML = islandName;
 
