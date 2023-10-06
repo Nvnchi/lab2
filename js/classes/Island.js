@@ -1,9 +1,15 @@
 export default class Island {
   constructor(name, htmlElement) {
+    // create an id for an island to later remove it
+    this.id = Math.floor(Math.random() * 1000000);
+
     this.name = name !== undefined ? name : this.getRandomName();
     htmlElement.style.backgroundColor = this.getRandomColor();
     htmlElement.innerHTML = this.name;
+    htmlElement.id = this.id;
+
     this.htmlElement = htmlElement;
+    
     this.displayIsland();
   }
 

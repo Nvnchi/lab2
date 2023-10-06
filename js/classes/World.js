@@ -30,10 +30,11 @@ export default class World {
     load() {
       // load islands from localstorage into array
       // loop over the array and addIslands()
-      document.querySelectorAll(".island").forEach(islandelement => islandelement.remove()); 
+      document.querySelectorAll(".island").forEach(islandelement => islandelement.remove());
+      this.islands = [];
       let storedNames = JSON.parse(localStorage.getItem("islands"));
       for (let i = 0; i < storedNames.length; i++) {
-        this.addIsland(storedNames[i]);
+        this.addIsland(storedNames[i].name);
      }
     }
   
@@ -52,6 +53,11 @@ export default class World {
       islandElement.classList.add("island");
 
       const islandObject = new Island(islandName, islandElement);
+
+      islandObject.htmlElement.addEventListener("click", () => {
+        this.islands = this.islands.filter((island) => island.id !== islandObject.id);
+        islandObject.remove();
+      });
 
       this.islands.push(islandObject);
       this.moveIsland(islandObject.htmlElement);
