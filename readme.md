@@ -1,4 +1,4 @@
-# 🦝 **[codesandbox link](https://rymlfx.csb.app)** 
+# 🦝 **[codesandbox link](https://s3mdll.csb.app)** 
 
 ## 🦝 JavaScript Optional Chaining Operator
 🌿 Deze functie vereenvoudigt de toegang tot waarden via verbonden objecten. De optionele ketenoperator (?.) maakt het mogelijk om de waarde van een eigenschap diep binnenin een keten van objecten op te halen zonder expliciet te controleren of elke verwijzing in de keten null of ongedefinieerd is.
